@@ -91,9 +91,11 @@ const data = [
   },
 ];
 
+
+
 const tableBody = document.querySelector(".tableBody");
 
-data.forEach((item) => {
+data.forEach((item) => { 
   const changeClass = item.change.startsWith("-") ? "negative" : "positive";
   const row = document.createElement("tr");
   row.innerHTML = `
@@ -105,3 +107,13 @@ data.forEach((item) => {
 
   tableBody.appendChild(row);
 });
+
+
+searchInput.addEventListener("input", () => {
+  const searchText = searchInput.value.toLowerCase();
+
+  const filtered = data.filter(item =>
+    item.name.toLowerCase().includes(searchText) ||
+    item.ticker.toLowerCase().includes(searchText)
+  );
+})
